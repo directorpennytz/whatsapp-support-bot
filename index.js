@@ -2,7 +2,10 @@ function generateReply(text) {
     const lower = text.toLowerCase();
 
     // Chagua lugha
-    const isEnglish = /[a-z]/.test(lower);
+// Detect Kiswahili first
+const swahiliWords = ["habari", "mambo", "shikamoo", "bei", "huduma", "ulipo", "wapi", "tafuta", "msaada"];
+const isSwahili = swahiliWords.some(w => lower.includes(w));
+const isEnglish = !isSwahili;   // Ukiona Kiswahili, jibu Kiswahili
 
     // Greetings
     if (
